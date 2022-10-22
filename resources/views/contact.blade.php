@@ -19,6 +19,9 @@
       <div class="mb-4">
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">お名前<span class="text-red-600 hover:underline dark:text-blue-500">※</span></label>
         <input name="name" value="{{ old('name') }}" type="text" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="バズ・ライトイヤー" required="">
+        @if ($errors->has('name'))
+        <p>{{ $errors->first('name') }}</p>
+        @endif
       </div>
 
       <div class="mb-4">
@@ -29,7 +32,7 @@
             <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">男性</label>
           </div>
           <div class="flex items-center mr-4">
-            <input name="gender" value="{{ old('gender') }}" id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" >
+            <input name="gender" value="{{ old('gender') }}" id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">女性</label>
           </div>
         </div>
@@ -46,16 +49,25 @@
           </div>
           <input name="email" value="{{ old('email') }}" type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required="">
         </div>
+        @if ($errors->has('email'))
+        <p>{{ $errors->first('email') }}</p>
+        @endif
       </div>
 
       <div class="mb-4">
         <label for="postcode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">郵便番号<span class="text-red-600 hover:underline dark:text-blue-500">※</span></label>
         <input name="postcode" value="{{ old('postcode') }}" type="text" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="例)123-4567" required="">
+        @if ($errors->has('postcode'))
+        <p>{{ $errors->first('postcode') }}</p>
+        @endif
       </div>
 
       <div class="mb-4">
         <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">住所<span class="text-red-600 hover:underline dark:text-blue-500">※</span></label>
         <input name="address" value="{{ old('address') }}" type="text" id="" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required="" placeholder="例)東京都渋谷区千駄ヶ谷1-2-3">
+        @if ($errors->has('address'))
+        <p>{{ $errors->first('address') }}</p>
+        @endif
       </div>
 
       <div class="mb-4">
@@ -65,7 +77,10 @@
 
       <div class="mb-4">
         <label for="opinion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">ご意見<span class="text-red-600 hover:underline dark:text-blue-500">※</span></label>
-        <textarea name="opinion" value="{{ old('opinion') }}" id="" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""></textarea>
+        <textarea name="opinion" value="" id="" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">{{ old('opinion') }}</textarea>
+        @if ($errors->has('opinion'))
+        <p>{{ $errors->first('opinion') }}</p>
+        @endif
       </div>
 
 

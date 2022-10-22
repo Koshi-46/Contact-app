@@ -22,11 +22,11 @@ class ContactController extends Controller
         $request->validate([
            'name' => 'required',
             'gender' => 'required',
-            'email' => ['required','email','confirmed'],
-            // 'email' => ['required|email:filter,dns'],
+            // 'email' => 'required|email',
+            'email' => 'required|email:filter,dns',
             'postcode' => ['required', new ZipCodeRule()],
             'address' => 'required',
-            'opinion' => ['required','max:120']
+            'opinion' => 'required|max:120'
         ]);
 
         $contacts = $request->all();
@@ -62,8 +62,8 @@ class ContactController extends Controller
       
     }
 
-    // public function confirm()
-    // {
-    //     return view('confirm');
-    // }
+    public function register()
+    {
+        return view('confirm');
+    }
 }

@@ -25,5 +25,5 @@ Route::get('/confirm', 'App\Http\Controllers\ContactController@confirm');
 
 Route::post('/confirm/thanks', 'App\Http\Controllers\ContactController@register')->name('contact.register');
 
-Route::get('/register', 'App\Http\Controllers\ContactController@confirm');
-Route::post('/register', 'App\Http\Controllers\ContactController@register')->name('contact.confirm');
+// Route::get('/register', 'App\Http\Controllers\ContactController@confirm');
+// Route::post('/register', 'App\Http\Controllers\ContactController@register')->name('contact.confirm');
