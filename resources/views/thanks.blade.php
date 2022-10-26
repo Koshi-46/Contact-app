@@ -12,11 +12,13 @@
 
 <body>
 
-  <div class="flex justify-center">
-    <h1>ご意見いただきありがとうございました。</h1>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      トップページへ
-    </button>
+  <div class="flex justify-center mt-28">
+    <div>
+      <h1>ご意見いただきありがとうございました。</h1>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold m-16 py-2 px-4 rounded">
+        トップページへ
+      </button>
+    </div>
   </div>
 
 

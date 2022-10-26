@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Rules\ZipCodeRule;
 use App\Models\Contact;
+use App\Http\Requests\ContactRequest;
+use Carbon\Carbon;
 
 class ContactController extends Controller
 {
@@ -15,33 +17,13 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function create(Request $request)
+    public function create(ContactRequest $request)
     {
-        
 
-        $request->validate([
-           'name' => 'required',
-            'gender' => 'required',
-            // 'email' => 'required|email',
-            'email' => 'required|email:filter,dns',
-            'postcode' => ['required', new ZipCodeRule()],
-            'address' => 'required',
-            'opinion' => 'required|max:120'
-        ]);
-
-        $contacts = $request->all();
+        $contacts = $request->validated();
         if(!$contacts){
             return redirect()->route('contact');
         }
-
-        if (isset($contacts['gender']))
-            $contacts['gender'] = mb_convert_kana($contacts['gender'], 'a');
-
-        if (isset($contacts['email']))
-            $contacts['email'] = mb_convert_kana($contacts['email'], 'a');
-
-        if (isset($contacts['postcode']))
-            $contacts['postcode'] = mb_convert_kana($contacts['postcode'], 'a');
 
         // $contacts = Validator::make($contacts, [
         //     'name' => 'required',
@@ -62,8 +44,57 @@ class ContactController extends Controller
       
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        return view('confirm');
+        $contacts = new Contact();
+
+        $request->validate([
+            'name' => 'required',
+             'gender' => 'required',
+             'email' => 'required|email:filter,dns',
+             'postcode' => ['required', new ZipCodeRule()],
+             'address' => 'required',
+             'building' => 'nullable',
+             'opinion' => 'required|max:120'
+         ]);
+ 
+
+        //  $contacts = $this->unsetToken($request);
+        
+        //  $contacts = $request->all();
+        //  if(!$contacts){
+        //      return redirect()->route('contact');
+        //  }
+
+         $contacts->fill($request->all())->save();
+
+        return view('thanks');
+    }
+
+    public function find()
+    {
+        $contacts = Contact::all();
+        $contacts = [];
+        return view('manage', ['contacts' => $contacts]);
+    }
+
+    public function search(Request $request)
+    {
+        $name = $request['name'];
+        $gender = $request['gender'];
+        $email = $request['email'];
+        $from = $request['from'];
+        $until = $request['until'];
+
+        $contacts = Contact::doSearch($name, $gender, $email, $from, $until);
+
+        return view('manage', ['contacts' => $contacts]);
+    }
+
+    public function delete(Request $request)
+    {
+        $contact = Contact::find($request->id);
+        $contact->delete();
+        return back();
     }
 }

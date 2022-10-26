@@ -21,9 +21,13 @@ Route::get('/', function () {
 Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact.index');
 
 Route::post('/contact/confirm', 'App\Http\Controllers\ContactController@create')->name('contact.create');
-Route::get('/confirm', 'App\Http\Controllers\ContactController@confirm');
 
-Route::post('/confirm/thanks', 'App\Http\Controllers\ContactController@register')->name('contact.register');
+Route::post('/contact/thanks', 'App\Http\Controllers\ContactController@register')->name('contact.register');
 
-// Route::get('/register', 'App\Http\Controllers\ContactController@confirm');
-// Route::post('/register', 'App\Http\Controllers\ContactController@register')->name('contact.confirm');
+Route::get('/manage', 'App\Http\Controllers\ContactController@find')->name('contact.find');
+Route::get('/search', 'App\Http\Controllers\ContactController@search')->name('contact.search');
+
+// Route::post('/delete', [TodoController::class, 'delete'])->name('todo.delete');
+Route::post('/delete', 'App\Http\Controllers\ContactController@delete')->name('contact.delete');
+
+
