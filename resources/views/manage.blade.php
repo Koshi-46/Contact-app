@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/resources/css/app.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <title>Top</title>
 </head>
 
 <body>
 
-  <main class='container mx-auto'>
-    <h1 class="my-5 font-bold ">管理システム</h1>
+  <main class="container mx-auto">
+    <h1 class="my-5 font-bold">管理システム</h1>
     <div class="p-4 w-full max-w-7xl bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
 
       <form action="/search" method="get" class="w-full ">
@@ -82,13 +83,13 @@
       </form>
     </div>
 
-   
+
     <p class="my-7">{{ $contacts->links() }}</p>
     <div class="grid grid-cols-4 gap-5 p-10">
       @foreach($contacts as $contact)
       <div class="max-w-sm rounded overflow-hidden shadow-lg bg-gray-100">
         <div class="px-6 pt-4 flex">
-          <div class="font-bold text-xl mb-2 mr-3">{{ $contact->name }}</div>
+          <div class="font-bold text-base mb-2 mr-3">{{ $contact->name }}</div>
           <span class="inline-block px-3 py-1 my-1 text-xs font-semibold text-gray-800"> @if($contact->gender == 1)
             男性
             @else
@@ -107,7 +108,7 @@
           <div class="font-bold text-xs mb-2"> {{ $contact->created_at }}</div>
         </div>
         <div class="px-6 pb-2">
-          <div class="text-xs mb-2"> {{ $contact->opinion }}</div>
+          <div class="text-xs mb-2 txt-limit" id="txt-limit">{{ $contact->opinion }}</div>
         </div>
 
       </div>
@@ -116,12 +117,29 @@
   </main>
 
 
-
-
-
-
-
-
 </body>
+<script>
+  function textTrim() {
+    let selector = document.getElementsByClassName('txt-limit');
+    let wordCount = 25;
+    let clamp = '…';
+    for (let i = 0; i < selector.length; i++) {
+      if (selector[i].innerText.length > wordCount) {
+        var str = selector[i].innerText;
+        str = str.substr(0, (wordCount - 1));
+        selector[i].innerText = str + clamp;
+      }
+    }
+  }
+  textTrim();
+
+
+
+  let extra = document.getElementsById('txt-limit');
+  extra.addEventListener('click', function() {
+    extra.classList.remove('txt-limit');
+  });
+
+</script>
 
 </html>
