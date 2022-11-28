@@ -12,7 +12,7 @@
 ## 環境構築方法
 1. 「git clone」などを用いてご自身の環境にコピー
 2. composer update
-３. .envをご自身の環境に編集
+3. .envをご自身の環境に編集
 4. php artisan key:generate
 5. php artisan migrate:fresh
 6. php artisan db:seed
