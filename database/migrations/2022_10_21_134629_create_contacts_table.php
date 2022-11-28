@@ -23,6 +23,8 @@ class CreateContactsTable extends Migration
             $table->string('building', 255);
             $table->text('opinion')->nullable(false);
             $table->timestamps();
+
+            $table->primary(['id']);
         });
     }
 

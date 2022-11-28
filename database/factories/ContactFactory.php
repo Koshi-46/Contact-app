@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Contact;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ContactFactory extends Factory
@@ -11,6 +12,9 @@ class ContactFactory extends Factory
      *
      * @return array
      */
+
+    protected $model = Contact::class;
+
     public function definition()
     {
         return [

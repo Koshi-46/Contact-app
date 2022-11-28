@@ -14,9 +14,7 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
 
 Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact.index');
 
@@ -27,7 +25,6 @@ Route::post('/contact/thanks', 'App\Http\Controllers\ContactController@register'
 Route::get('/manage', 'App\Http\Controllers\ContactController@find')->name('contact.find');
 Route::get('/search', 'App\Http\Controllers\ContactController@search')->name('contact.search');
 
-// Route::post('/delete', [TodoController::class, 'delete'])->name('todo.delete');
 Route::post('/delete', 'App\Http\Controllers\ContactController@delete')->name('contact.delete');
 
 
