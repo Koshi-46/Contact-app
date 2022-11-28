@@ -18,7 +18,7 @@
       <h1 class="text-2xl font-bold mb-4 mt-5 flex justify-center">お問合わせ</h1>
       <div class="mb-4">
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">お名前<span class="text-red-600 hover:underline dark:text-blue-500">※</span></label>
-        <input name="name" value="{{ old('name') }}" type="text" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="バズ・ライトイヤー" wire:model="name" id="name">
+        <input name="name" value="{{ old('name') }}" type="text" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="加藤史帆" wire:model="name" id="name">
         @error('name')<div class="text-red-400">{{ $message }}</div> @enderror
       </div>
 
@@ -45,7 +45,7 @@
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
             </svg>
           </div>
-          <input name="email" value="{{ old('email') }}" type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" wire:model="email">
+          <input name="email" value="{{ old('email') }}" type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ramen@kaedama.com" wire:model="email">
         </div>
         @error('email')<div class="text-red-400">{{ $message }}</div> @enderror
 
@@ -53,10 +53,12 @@
 
       <div class="mb-4">
         <label for="postcode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">郵便番号<span class="text-red-600 hover:underline dark:text-blue-500">※</span></label>
-        <input name="postcode" value="{{ old('postcode') }}" type="text" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="例)123-4567" id="zip" wire:model="postcode">
-        @error('postcode')<div class="text-red-400">{{ $message }}</div> @enderror
+        <div class="flex justify-between mb-6">
+          <input name="postcode" value="{{ old('postcode') }}" type="text" aria-label="disabled input" class=" bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 w-9/12" placeholder="例)123-4567" id="zip" wire:model="postcode">
+          @error('postcode')<div class="text-red-400">{{ $message }}</div> @enderror
 
-        <button class="api-address my-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">住所を自動入力</button>
+          <button class="api-address my-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 leading-3 ml-2" type="button">住所を自動入力</button>
+        </div>
       </div>
 
       <div class="mb-4">
@@ -88,29 +90,21 @@
 </body>
 
 <script>
-  //イベントリスナの設置：ボタンをクリックしたら反応する
   document.querySelector('.api-address').addEventListener('click', () => {
-    //郵便番号を入力するテキストフィールドから値を取得
     const elem = document.querySelector('#zip');
     const zip = elem.value.replace('-', '');
 
 
 
-    //fetchでAPIからJSON文字列を取得する
     fetch('../api/address/' + zip)
       .then((data) => data.json())
       .then((obj) => {
-        //郵便番号が存在しない場合，空のオブジェクトが返ってくる
-        //オブジェクトが空かどうかを判定
         if (!Object.keys(obj).length) {
-          //オブジェクトが空の場合
           txt = '住所が存在しません。'
         } else {
-          //オブジェクトが存在する場合
-          //住所は分割されたデータとして返ってくるので連結する
+
           txt = obj.pref + obj.city + obj.town;
         }
-        //住所を入力するテキストフィールドに文字列を書き込む
         document.querySelector('#address').value = txt;
       });
   });

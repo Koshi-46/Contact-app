@@ -119,19 +119,19 @@
 
 </body>
 <script>
-  // function textTrim() {
-  //   let selector = document.getElementsByClassName('txt-limit');
-  //   let wordCount = 25;
-  //   let clamp = '…';
-  //   for (let i = 0; i < selector.length; i++) {
-  //     if (selector[i].innerText.length > wordCount) {
-  //       var str = selector[i].innerText;
-  //       str = str.substr(0, (wordCount - 1));
-  //       selector[i].innerText = str + clamp;
-  //     }
-  //   }
-  // }
-  // textTrim();
+  function textTrim() {
+    let selector = document.getElementsByClassName('txt-limit');
+    let wordCount = 25;
+    let clamp = '…';
+    for (let i = 0; i < selector.length; i++) {
+      if (selector[i].innerText.length > wordCount) {
+        var str = selector[i].innerText;
+        str = str.substr(0, (wordCount - 1));
+        selector[i].innerText = str + clamp;
+      }
+    }
+  }
+  textTrim();
 
 
 

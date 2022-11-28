@@ -27,7 +27,6 @@ class AddressesSeeder extends Seeder
         );
 
         foreach ($memberSplFileObject as $key => $row) {
-            //excelでcsvを保存するとBOM付きになるので削除する
             if ($key === 0) {
                 $row[0] = preg_replace('/^\xEF\xBB\xBF/', '', $row[0]);
             }

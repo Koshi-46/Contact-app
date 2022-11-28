@@ -25,18 +25,6 @@ class ContactController extends Controller
             return redirect()->route('contact');
         }
 
-        // $contacts = Validator::make($contacts, [
-        //     'name' => 'required',
-        //     'gender' => 'required',
-        //     'email' => ['required', 'email:filter'],
-        //     'postcode' => ['required', new ZipCodeRule()],
-        //     'address' => ['required', 'numeric', 'digits_between:8,11'],
-        //     'opinion' => 'max:120'
-        // ]);
-        // $contacts->validate();
-
-
-
         return view('confirm', [
             'contacts' => $contacts,
         ]);
@@ -57,14 +45,6 @@ class ContactController extends Controller
              'building' => 'nullable',
              'opinion' => 'required|max:120'
          ]);
- 
-
-        //  $contacts = $this->unsetToken($request);
-        
-        //  $contacts = $request->all();
-        //  if(!$contacts){
-        //      return redirect()->route('contact');
-        //  }
 
          $contacts->fill($request->all())->save();
 
