@@ -9,8 +9,15 @@
 ユーザーはお問合せフォームから問い合わせ内容を送信できる。
 また、管理画面からお問合せの内容を検索機能を用いて絞り込める。
 
-## URL
-
+## 環境構築方法
+1. 「git clone」などを用いてご自身の環境にコピー
+2. composer update
+３. .envをご自身の環境に編集
+4. php artisan key:generate
+5. php artisan migrate:fresh
+6. php artisan db:seed
+7. php artisan serve
+8. /contactにアクセス
 
 ## 機能一覧
 - お問合せフォームの送信
