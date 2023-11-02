@@ -31,20 +31,7 @@ class ContactController extends Controller
         ]);
 
     }
-    
-    public function creating(ContactRequest $request)
-    {
 
-        $contacts = $request->validated();
-        if(!$contacts){
-            return redirect()->route('contact');
-        }
-        dd($contacts);
-
-        return view('confirm', [
-            'contacts' => $contacts,
-        ]);
-    }
     
     public function register(Request $request)
     {

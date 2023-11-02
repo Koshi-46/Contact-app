@@ -18,7 +18,6 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact.index');
 
-// Route::get('/contact/confirm', 'App\Http\Controllers\ContactController@create')->name('contact.creating');
 Route::post('/contact/confirm', 'App\Http\Controllers\ContactController@create')->name('contact.create');
 
 Route::post('/contact/thanks', 'App\Http\Controllers\ContactController@register')->name('contact.register');
