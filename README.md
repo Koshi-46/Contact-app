@@ -10,14 +10,23 @@
 また、管理画面からお問合せの内容を検索機能を用いて絞り込める。
 
 ## 環境構築方法
-1. 「git clone」などを用いてご自身の環境にコピー
-2. composer update
-3. .envをご自身の環境に編集
-4. php artisan key:generate
-5. php artisan migrate:fresh
-6. php artisan db:seed
-7. php artisan serve
-8. /contactにアクセス
+1. Laravelが使用できる環境構築
+2. 「git clone」などを用いてご自身の環境にコピー
+3. composer update
+4. .envをご自身の環境に編集
+5. php artisan key:generate
+6. php artisan migrate:fresh
+7. php artisan db:seed
+8. php artisan serve
+
+##　使い方
+### 問い合わせ機能
+1. /contactにアクセス
+2. 必要情報を入力し送信するとお問い合わせができます
+
+### 検索機能
+1. /manageにアクセス
+2. 問い合わせされた情報が一覧で表示されます
 
 ## 機能一覧
 - お問合せフォームの送信
