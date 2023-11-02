@@ -31,6 +31,6 @@
 - Javascript
 ### バックエンド
 - PHP 8.1.9  
-- Laravel　8.83.26  
+- Laravel　10.30.1
 - MySQL 8.0.30 
 - composer 2.3.10
