@@ -31,7 +31,6 @@ class ContactController extends Controller
         ]);
 
     }
-
     
     public function register(Request $request)
     {
@@ -54,8 +53,8 @@ class ContactController extends Controller
 
     public function find()
     {
-        $contacts = Contact::all();
-        $contacts = [];
+        $contacts = Contact::paginate(20);
+        // $contacts = [];
         return view('manage', ['contacts' => $contacts]);
     }
 
