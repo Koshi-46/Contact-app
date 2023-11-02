@@ -18,7 +18,7 @@
       <h1 class="text-2xl font-bold mb-4 mt-5 flex justify-center">お問合わせ</h1>
       <div class="mb-4">
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">お名前<span class="text-red-600 hover:underline dark:text-blue-500">※</span></label>
-        <input name="name" value="{{ old('name') }}" type="text" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="加藤史帆" wire:model="name" id="name">
+        <input name="name" value="{{ old('name') }}" type="text" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="例）生田絵梨花" wire:model="name" id="name">
         @error('name')<div class="text-red-400">{{ $message }}</div> @enderror
       </div>
 
@@ -69,7 +69,7 @@
 
       <div class="mb-4">
         <label for="building" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">建物名</label>
-        <input name="building" value="{{ old('building') }}" type="text" id="" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="例)天然平目のセルクルと雲丹のグラタン仕立てマンション101">
+        <input name="building" value="{{ old('building') }}" type="text" id="" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="例)五所川原マンション101">
       </div>
 
       <div class="mb-4">
